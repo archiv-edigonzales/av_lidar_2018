@@ -1,0 +1,30 @@
+{
+    "pipeline":[
+      {
+        "type" : "readers.las",
+        "filename" : "/input/fubar.las"
+      },      
+      {
+        "type":"filters.hag"
+      },
+      {
+        "type":"filters.ferry",
+        "dimensions":"HeightAboveGround=Z"
+      },
+      {
+        "type":"filters.range",
+        "limits":"Classification[4:5]"
+      },
+
+      {
+        "type":"writers.gdal",
+        "filename":"/output/fubar.tif",
+        "dimension":"Z",
+        "data_type":"float",
+        "output_type":"mean",
+        "resolution":0.25,
+        "bounds":"([2590500.00,2590999.75],[1254000.00,1254499.75])",
+        "gdalopts":"TILED=YES,COMPRESS=DEFLATE,PREDICTOR=2"
+      }
+    ]
+  }

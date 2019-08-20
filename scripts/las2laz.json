@@ -1,0 +1,14 @@
+{
+    "pipeline":[
+      {
+        "type" : "readers.las",
+        "filename" : "/input/fubar.las"
+      },      
+      {
+        "type":"writers.las",
+        "filename":"/output/fubar.laz",
+        "compression":"laszip",
+        "a_srs":"EPSG:2056"
+      }
+    ]
+  }
